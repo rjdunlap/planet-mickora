@@ -10,11 +10,13 @@ function MapGen_Mickora()
     --map_gen_setting.terrain_segmentation = "very-high"
 
     map_gen_setting.autoplace_controls = {
-        ["stone"] = { frequency = 1, size = 1, richness = 1},
-        ["iron-ore"] = { frequency = 1, size = 1, richness = 1},
-        ["coal"] = { frequency = 1, size = 1, richness = 1},
-        ["copper-ore"] = { frequency = 1, size = 1, richness = 1},
-        ["crude-oil"] = { frequency = 1, size = 1, richness = 1},
+        
+        ["enemy-base"] = { frequency = 2, size = 1, richness = 1},
+        ["stone"] = { frequency = 0.5, size = 2, richness = 2},
+        ["iron-ore"] = { frequency = 0.5, size = 2, richness = 2},
+        ["coal"] = { frequency = 0.5, size = 2, richness = 2},
+        ["copper-ore"] = { frequency = 0.5, size = 2, richness = 2},
+        ["crude-oil"] = { frequency = 0.5, size = 2, richness = 2},
         ["trees"] = { frequency = 1, size = 1, richness = 1 },
         ["rocks"] = { frequency = 1, size = 1, richness = 1},
         ["water"] = { frequency = 1, size = 1, richness = 1 },

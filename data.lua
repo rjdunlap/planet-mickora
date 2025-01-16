@@ -20,8 +20,8 @@ function MapGen_Mickora()
         ["trees"] = { frequency = 1, size = 1, richness = 1 },
         ["rocks"] = { frequency = 1, size = 1, richness = 1},
         ["water"] = { frequency = 1, size = 1, richness = 1 },
-        ["uranium-ore"] = { frequency = 0, size = 0, richness = 0 },
     }
+
     return map_gen_setting
 end
 -- increse stone patch size in start area
@@ -31,6 +31,21 @@ end
 
 local nauvis = data.raw["planet"]["nauvis"]
 local planet_lib = require("__PlanetsLib__.lib.planet")
+local start_astroid_spawn_rate =
+{
+  probability_on_range_chunk =
+  {
+    {position = 0.1, probability = asteroid_util.nauvis_chunks, angle_when_stopped = asteroid_util.chunk_angle},
+    {position = 0.9, probability = asteroid_util.fulgora_chunks, angle_when_stopped = asteroid_util.chunk_angle}
+  },
+  type_ratios =
+  {
+    {position = 0.1, ratios = asteroid_util.aquilo_ratio},
+    {position = 0.9, ratios = asteroid_util.fulgora_ratio},
+  }
+}
+local start_astroid_spawn = asteroid_util.spawn_definitions(start_astroid_spawn_rate, 0.1)
+
 
 local mickora= 
 {
@@ -56,7 +71,9 @@ local mickora=
             {0.5, "__core__/graphics/color_luts/night.png"},
         }
     },
-    map_gen_settings = MapGen_Mickora()
+    map_gen_settings = MapGen_Mickora(),
+    asteroid_spawn_influence = 1,
+    asteroid_spawn_definitions = start_astroid_spawn
 }
 
 mickora.orbit = {
@@ -64,18 +81,18 @@ mickora.orbit = {
         type = "space-location",
         name = "star",
     },
-    distance = 2,
-    orientation = 0.8
+    distance = 30,
+    orientation = 0.35
 }
 
 local mickora_connection = {
     type = "space-connection",
-    name = "nauvis-mickora",
-    from = "nauvis",
+    name = "fulgora-mickora",
+    from = "fulgora",
     to = "mickora",
-    subgroup = data.raw["space-connection"]["nauvis-vulcanus"].subgroup,
-    length = 15000,
-    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+    subgroup = data.raw["space-connection"]["nauvis-fulgora"].subgroup,
+    length = 7000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora),
   }
 
 PlanetsLib:extend({mickora})

@@ -1,3 +1,4 @@
+require("tiles")
 --data.lua
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
 
@@ -7,21 +8,60 @@ function MapGen_Mickora()
     -- Nauvis-based generation
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
-    --map_gen_setting.terrain_segmentation = "very-high"
+    map_gen_setting.property_expression_names.cliffiness = "cliffiness_basic"
+    map_gen_setting.property_expression_names.cliff_elevation = "cliff_elevation_from_elevation"
+    
+    map_gen_setting.cliff_settings =
+    {
+      name = "cliff",
+      control = "nauvis_cliff",
+      cliff_smoothing = 0
+    }
 
     map_gen_setting.autoplace_controls = {
         
-        ["enemy-base"] = { frequency = 2, size = 1, richness = 1},
+        ["enemy-base"] = { frequency = 4, size = 1, richness = 1},
         ["stone"] = { frequency = 0.5, size = 2, richness = 2},
         ["iron-ore"] = { frequency = 0.5, size = 2, richness = 2},
         ["coal"] = { frequency = 0.5, size = 2, richness = 2},
         ["copper-ore"] = { frequency = 0.5, size = 2, richness = 2},
-        ["crude-oil"] = { frequency = 0.5, size = 2, richness = 2},
-        ["trees"] = { frequency = 1, size = 1, richness = 1 },
-        ["rocks"] = { frequency = 1, size = 1, richness = 1},
+        ["crude-oil"] = { frequency = 1, size = 1, richness = 2},
+        ["trees"] = { frequency = 0.5, size = 0.5, richness = 1 },
+        ["rocks"] = { frequency = 2, size = 1, richness = 1},
         ["water"] = { frequency = 1, size = 1, richness = 1 },
+        ["uranium-ore"] = { frequency = 1, size = 1, richness = 1 },
+        ["nauvis_cliff"] = { frequency = 2, size = 1, richness = 1},
     }
 
+    map_gen_setting.autoplace_settings["tile"] =
+    {
+        settings =
+        {
+            ["mickora_grass-1"] = {},
+            ["mickora_grass-2"] = {},
+            ["dry-dirt"] = {},
+            ["dirt-1"] = {},
+            ["dirt-2"] = {},
+            ["dirt-3"] = {},
+            ["dirt-4"] = {},
+            ["dirt-5"] = {},
+            ["dirt-6"] = {},
+            ["dirt-7"] = {},
+            ["sand-1"] = {},
+            ["sand-2"] = {},
+            ["sand-3"] = {},
+            ["red-desert-0"] = {},
+            ["red-desert-1"] = {},
+            ["red-desert-2"] = {},
+            ["red-desert-3"] = {},
+            ["water"] = {},
+            ["deepwater"] = {},
+
+          --volcanic tiles
+          ["volcanic-soil-light"] = {},
+          ["volcanic-ash-light"] = {},
+        }
+    }
     return map_gen_setting
 end
 -- increse stone patch size in start area
@@ -81,23 +121,23 @@ mickora.orbit = {
         type = "space-location",
         name = "star",
     },
-    distance = 30,
+    distance = 20,
     orientation = 0.35
 }
 
-local mickora_connection = {
-    type = "space-connection",
-    name = "fulgora-mickora",
-    from = "fulgora",
-    to = "mickora",
-    subgroup = data.raw["space-connection"]["nauvis-fulgora"].subgroup,
-    length = 7000,
-    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora),
-  }
+--local mickora_connection = {
+--    type = "space-connection",
+--    name = "fulgora-mickora",
+--    from = "fulgora",
+--    to = "mickora",
+--    subgroup = data.raw["space-connection"]["nauvis-fulgora"].subgroup,
+--    length = 7000,
+--    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora),
+--  }
 
 PlanetsLib:extend({mickora})
 
-data:extend{mickora_connection}
+--data:extend{mickora_connection}
 
 data:extend {{
     type = "technology",
@@ -128,6 +168,5 @@ data:extend {{
     },
     order = "ea[mickora]",
 }}
-
 
 APS.add_planet{name = "mickora", filename = "__planet-mickora__/mickora.lua", technology = "planet-discovery-mickora"}

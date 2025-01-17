@@ -1,12 +1,15 @@
 {
     "name": "planet-mickora",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "title": "Planet Mickora",
     "author": "rjdunlap",
     "factorio_version": "2.0",
     "dependencies": ["base >= 2.0.28",
       "space-age",
-      "any-planet-start",
-      "PlanetsLib >= 1.0.8"],
-    "description": "This mod adds in a new starter planet Mickora"
+      "any-planet-start >= 1.1.7",
+      "PlanetsLib",
+      "atan-nuclear-science",
+      "alien-biomes-graphics"
+    ],
+    "description": "This mod adds in a new starter planet Mickora that replaces Nauvis"
   }

@@ -107,13 +107,14 @@ local mickora=
     surface_render_parameters =
     {
         day_night_cycle_color_lookup = {
-            {0.0, "__core__/graphics/color_luts/night.png"},
-            {0.5, "__core__/graphics/color_luts/night.png"},
+            {0.0, "identity"},
+            {0.35, "__core__/graphics/color_luts/night.png"},
         }
     },
     map_gen_settings = MapGen_Mickora(),
     asteroid_spawn_influence = 1,
-    asteroid_spawn_definitions = start_astroid_spawn
+    asteroid_spawn_definitions = start_astroid_spawn,
+    pollutant_type = "pollution",
 }
 
 mickora.orbit = {

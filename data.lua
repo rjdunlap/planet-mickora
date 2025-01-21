@@ -144,7 +144,7 @@ data:extend {{
     type = "technology",
     name = "planet-discovery-mickora",
     icons = util.technology_icon_constant_planet("__planet-mickora__/graphics/planet-mickora.png"),
-    icon_size = 256,
+    icon_size = 512,
     essential = true,
     localised_description = {"space-location-description.mickora"},
     effects = {

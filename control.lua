@@ -19,11 +19,9 @@ end)
 
 script.on_event(defines.events.on_player_joined_game, function(event)
 
-    local surface = game.surfaces["mickora"]
-    game.surfaces["mickora"].daytime = 0.35
-    game.surfaces["mickora"].freeze_daytime = true
-    
-    game.players[event.player_index].enable_flashlight()
+    if game.players[event.player_index].surface.name == "mickora" then
+        game.players[event.player_index].enable_flashlight()
+    end
 end)
 
 script.on_event(defines.events.on_player_changed_surface, function(event)

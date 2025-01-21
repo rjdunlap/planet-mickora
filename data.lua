@@ -80,7 +80,7 @@ local start_astroid_spawn_rate =
   },
   type_ratios =
   {
-    {position = 0.1, ratios = asteroid_util.aquilo_ratio},
+    {position = 0.1, ratios = asteroid_util.nauvis_ratio},
     {position = 0.9, ratios = asteroid_util.fulgora_ratio},
   }
 }

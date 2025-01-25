@@ -137,6 +137,7 @@ mickora.orbit = {
 --  }
 
 PlanetsLib:extend({mickora})
+PlanetsLib.borrow_music(data.raw["planet"]["nauvis"], mickora)
 
 --data:extend{mickora_connection}
 

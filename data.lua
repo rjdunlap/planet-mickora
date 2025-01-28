@@ -126,20 +126,20 @@ mickora.orbit = {
     orientation = 0.35
 }
 
---local mickora_connection = {
---    type = "space-connection",
---    name = "fulgora-mickora",
---    from = "fulgora",
---    to = "mickora",
---    subgroup = data.raw["space-connection"]["nauvis-fulgora"].subgroup,
---    length = 7000,
---    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora),
---  }
+local mickora_connection = {
+    type = "space-connection",
+    name = "fulgora-mickora",
+    from = "fulgora",
+    to = "mickora",
+    subgroup = data.raw["space-connection"]["nauvis-fulgora"].subgroup,
+    length = 7000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora),
+  }
 
 PlanetsLib:extend({mickora})
 PlanetsLib.borrow_music(data.raw["planet"]["nauvis"], mickora)
 
---data:extend{mickora_connection}
+data:extend{mickora_connection}
 
 data:extend {{
     type = "technology",

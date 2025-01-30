@@ -103,6 +103,7 @@ local mickora=
         ["pressure"] = nauvis.surface_properties["pressure"],
         ["magnetic-field"] = nauvis.surface_properties["magnetic-field"],
         ["day-night-cycle"] = nauvis.surface_properties["day-night-cycle"],
+        ["gravity"] = 10,
     },
     surface_render_parameters =
     {
@@ -144,7 +145,7 @@ data:extend{mickora_connection}
 data:extend {{
     type = "technology",
     name = "planet-discovery-mickora",
-    icons = util.technology_icon_constant_planet("__planet-mickora__/graphics/planet-mickora.png"),
+    icons = PlanetsLib.technology_icon_constant_planet("__planet-mickora__/graphics/planet-mickora.png", 512),
     icon_size = 512,
     essential = true,
     localised_description = {"space-location-description.mickora"},

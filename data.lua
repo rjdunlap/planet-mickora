@@ -98,6 +98,7 @@ local mickora=
     starmap_icon = "__planet-mickora__/graphics/planet-mickora.png",
     starmap_icon_size = 512,
     magnitude = nauvis.magnitude,
+    subgroup = "planets",
     surface_properties = {
         ["solar-power"] = 0,
         ["pressure"] = nauvis.surface_properties["pressure"],

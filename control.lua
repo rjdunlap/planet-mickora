@@ -1,8 +1,15 @@
+script.on_init(function()
+    if game.surfaces["mickora"] then
+        game.surfaces["mickora"].daytime = 0.35
+        game.surfaces["mickora"].freeze_daytime = true
+    end
+end)
+
 script.on_event(defines.events.on_surface_created, function(event)
     local surface = game.surfaces[event.surface_index]
     if surface.name == "mickora" then
         game.surfaces[event.surface_index].daytime = 0.35
-        game.surfaces[event.surface_index].freeze_daytime = true        
+        game.surfaces[event.surface_index].freeze_daytime = true   
     end
 
 end)
@@ -10,6 +17,8 @@ end)
 script.on_event(defines.events.on_player_joined_game, function(event)
     if game.players[event.player_index].surface.name == "mickora" then
         game.players[event.player_index].enable_flashlight()
+        game.surfaces["mickora"].daytime = 0.35
+        game.surfaces["mickora"].freeze_daytime = true
     end
 end)
 

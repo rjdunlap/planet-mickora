@@ -1,1 +1,4 @@
-APS.add_choice("mickora")
+-- Any Planet Start is optional: only register start choices when it is installed.
+if mods["any-planet-start"] then
+    APS.add_choice("mickora")
+end

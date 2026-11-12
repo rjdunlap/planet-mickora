@@ -173,4 +173,7 @@ data:extend {{
     order = "ea[mickora]",
 }}
 
-APS.add_planet{name = "mickora", filename = "__planet-mickora__/mickora.lua", technology = "planet-discovery-mickora"}
+-- Any Planet Start is optional.
+if mods["any-planet-start"] then
+    APS.add_planet{name = "mickora", filename = "__planet-mickora__/mickora.lua", technology = "planet-discovery-mickora"}
+end
